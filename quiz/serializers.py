@@ -1,0 +1,25 @@
+from django.db.models import fields
+from rest_framework import serializers, validators
+from django.contrib.auth.models import User
+from django.contrib.auth.password_validation import validate_password
+from dj_rest_auth.serializers import TokenSerializer
+
+from quiz.models import Category, Quiz
+
+
+class CategorySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Category
+        fields = "__all__"
+
+
+class QuizSerializer(serializers.ModelSerializer):
+    # category = CategorySerializer(many=True, required=False)
+    # category = serializers.PrimaryKeyRelatedField(
+    #     queryset=Category.objects.all())
+    # category_id = serializers.IntegerField()
+
+    class Meta:
+        model = Quiz
+        fields = "__all__"
