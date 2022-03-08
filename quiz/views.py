@@ -14,15 +14,8 @@ class Categories(APIView):
 
 
 class QuizView(APIView):
-    def get_obj(self, category):
-        return get_object_or_404(Quiz, category=category)
-
+   
     def get(self, request, category):
-        queryset = Category.objects.filter(category)
+        queryset = Quiz.objects.filter(category=category)
         serializer = QuizSerializer(queryset, many=True)
         return Response(serializer.data)
-
-
-# class QuizView(viewsets.ModelViewSet):
-#     queryset = Quiz.objects.all()
-#     serializer_class = QuizSerializer

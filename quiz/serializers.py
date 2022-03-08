@@ -15,11 +15,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class QuizSerializer(serializers.ModelSerializer):
-    # category = CategorySerializer(many=True, required=False)
-    # category = serializers.PrimaryKeyRelatedField(
-    #     queryset=Category.objects.all())
-    # category_id = serializers.IntegerField()
-
+   
     class Meta:
         model = Quiz
         fields = "__all__"

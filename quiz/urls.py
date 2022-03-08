@@ -1,15 +1,10 @@
+from django.urls import path
+from quiz.views import Categories
+from .views import QuizView
 
-from django.urls import path, include
-from rest_framework import routers
-from quiz.views import Categories, QuizView
 
 
-# router = routers.DefaultRouter()
-# router.register('', QuizView)
-
-urlpatterns = [
-
-    #    path('register/',RegisterAPI.as_view() ),
+urlpatterns = [   
     path('', Categories.as_view()),
     path('<category>/', QuizView.as_view()),
 
