@@ -15,33 +15,35 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class QuizSerializer(serializers.ModelSerializer):
-   
+    category = serializers.StringRelatedField()
+
     class Meta:
         model = Quiz
-        fields =[
+        fields = [
             "title",
-            "category"
-            ]
+            "category",
+
+        ]
+
+
 class AnswerSerializer(serializers.ModelSerializer):
-   
+
     class Meta:
         model = Answer
         fields = [
             "id",
             "answer_text",
             "is_right"
-            ]
-        
-        
+        ]
+
+
 class QuestionSerializer(serializers.ModelSerializer):
-    answers=serializers.SerializerMethodField()
-    
-    def get_answers(self,obj):
-        serializer=AnswerSerializer(obj.question,many=True)
+    answers = serializers.SerializerMethodField()
+
+    def get_answers(self, obj):
+        serializer = AnswerSerializer(obj.question, many=True)
         return (serializer.data)
-   
+
     class Meta:
         model = Question
-        fields = ["id","title","difficulty","answers"]
-
-
+        fields = ["id", "title", "difficulty", "answers"]

@@ -38,13 +38,14 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'nested_admin',
     # third party
     "rest_framework",
     "drf_yasg",
-    'rest_framework.authtoken',    
+    'rest_framework.authtoken',
     'dj_rest_auth',
     # my apps
-    
+
     "users",
     "quiz",
 ]
@@ -127,11 +128,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 REST_AUTH_SERIALIZERS = {
     'TOKEN_SERIALIZER': 'users.serializers.CustomTokenSerializer',
-    
+
 }
 
 REST_FRAMEWORK = {
 
-'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework.authentication.TokenAuthentication',]
-    
+    'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework.authentication.TokenAuthentication', ]
+
 }
