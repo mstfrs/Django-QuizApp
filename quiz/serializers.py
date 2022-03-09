@@ -18,7 +18,10 @@ class QuizSerializer(serializers.ModelSerializer):
    
     class Meta:
         model = Quiz
-        fields = "__all__"
+        fields =[
+            "title",
+            "category"
+            ]
 class AnswerSerializer(serializers.ModelSerializer):
    
     class Meta:
@@ -31,9 +34,7 @@ class AnswerSerializer(serializers.ModelSerializer):
         
         
 class QuestionSerializer(serializers.ModelSerializer):
-    # answers=AnswerSerializer(many=True)
     answers=serializers.SerializerMethodField()
-    # answers=AnswerSerializer(many=True)
     
     def get_answers(self,obj):
         serializer=AnswerSerializer(obj.question,many=True)
@@ -44,9 +45,3 @@ class QuestionSerializer(serializers.ModelSerializer):
         fields = ["id","title","difficulty","answers"]
 
 
-
-# tracks = serializers.SerializerMethodField()
-    
-#     def get_tracks(self, obj):
-#         serializer = TrackSerializer(obj.tracks, many=True)
-#         return {'items' : serializer.data}
