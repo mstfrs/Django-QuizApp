@@ -8,22 +8,26 @@ from quiz.models import Answer, Category, Question, Quiz
 
 
 class CategorySerializer(serializers.ModelSerializer):
+    quiz_count = serializers.SerializerMethodField()
 
     class Meta:
         model = Category
-        fields = "__all__"
+        fields = ("name", "quiz_count")
+
+    def get_quiz_count(self, obj):
+        return obj.category.count()
 
 
 class QuizSerializer(serializers.ModelSerializer):
     category = serializers.StringRelatedField()
+    question_count = serializers.SerializerMethodField()
 
     class Meta:
         model = Quiz
-        fields = [
-            "title",
-            "category",
+        fields = ("title", "category", "question_count")
 
-        ]
+    def get_question_count(self, obj):
+        return obj.quiz.count()
 
 
 class AnswerSerializer(serializers.ModelSerializer):
