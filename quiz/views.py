@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404, render
 from rest_framework.views import APIView
-from .models import Category, Question, Quiz
+from .models import Answer, Category, Question, Quiz
 from .serializers import CategorySerializer, QuestionSerializer, QuizSerializer
 from rest_framework import viewsets
 
